@@ -29,7 +29,7 @@ export async function middleware(request: NextRequest) {
     }
   );
 
-  // Refresh the auth token
+  // Only refresh session — no redirects here
   await supabase.auth.getUser();
 
   return supabaseResponse;
