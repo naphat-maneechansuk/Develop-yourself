@@ -2,13 +2,32 @@ import { createClient } from "@/lib/supabase/server";
 import { redirect } from "next/navigation";
 import { LevelDisplay } from "@/components/dashboard/level-display";
 import { QuestList } from "@/components/quest/quest-list";
+import { CatchUpModal } from "@/components/dashboard/catchup-modal";
 import type { GameConfig, Profile, Quest, DailyLog } from "@/types";
+
+function getDatesBetween(startDate: string, endDate: string): string[] {
+  const dates: string[] = [];
+  const current = new Date(startDate + "T00:00:00");
+  const end = new Date(endDate + "T00:00:00");
+
+  // Start from the day after last_active_date
+  current.setDate(current.getDate() + 1);
+
+  while (current < end) {
+    dates.push(current.toISOString().split("T")[0]);
+    current.setDate(current.getDate() + 1);
+  }
+
+  return dates;
+}
 
 export default async function DashboardPage() {
   const supabase = await createClient();
   const { data: { user } } = await supabase.auth.getUser();
 
   if (!user) redirect("/login");
+
+  const today = new Date().toISOString().split("T")[0];
 
   const [profileRes, configRes, questsRes, logRes] = await Promise.all([
     supabase.from("profiles").select("*").eq("id", user!.id).single(),
@@ -17,13 +36,13 @@ export default async function DashboardPage() {
       .from("quests")
       .select("*")
       .eq("user_id", user!.id)
-      .eq("assigned_date", new Date().toISOString().split("T")[0])
+      .eq("assigned_date", today)
       .order("created_at", { ascending: false }),
     supabase
       .from("daily_logs")
       .select("*")
       .eq("user_id", user!.id)
-      .eq("log_date", new Date().toISOString().split("T")[0])
+      .eq("log_date", today)
       .single(),
   ]);
 
@@ -36,8 +55,36 @@ export default async function DashboardPage() {
   const completedQuests = quests.filter((q) => q.status === "completed");
   const failedQuests = quests.filter((q) => q.status === "failed");
 
+  // Check for missed days
+  const lastActiveDate = profile.last_active_date ?? today;
+  const missedDates = getDatesBetween(lastActiveDate, today);
+
+  let missedDays: { date: string; quests: Quest[] }[] = [];
+
+  if (missedDates.length > 0) {
+    // Fetch quests for all missed dates
+    const { data: missedQuests } = await supabase
+      .from("quests")
+      .select("*")
+      .eq("user_id", user!.id)
+      .in("assigned_date", missedDates)
+      .order("created_at", { ascending: false });
+
+    const allMissedQuests = (missedQuests ?? []) as Quest[];
+
+    // Group by date
+    missedDays = missedDates
+      .map((date) => ({
+        date,
+        quests: allMissedQuests.filter((q) => q.assigned_date === date),
+      }))
+      .filter((day) => day.quests.length > 0);
+  }
+
   return (
     <div className="mx-auto max-w-3xl space-y-8">
+      {missedDays.length > 0 && <CatchUpModal missedDays={missedDays} />}
+
       <div>
         <p className="mb-1 text-xs uppercase tracking-widest text-[#737373]">
           {new Date().toLocaleDateString("th-TH", { weekday: "long", year: "numeric", month: "long", day: "numeric" })}

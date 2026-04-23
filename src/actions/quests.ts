@@ -272,3 +272,21 @@ export async function failQuest(questId: string) {
   revalidatePath("/history");
   return { success: true };
 }
+
+export async function deleteQuest(questId: string) {
+  const supabase = await createClient();
+  const { data: { user } } = await supabase.auth.getUser();
+  if (!user) return { error: "กรุณาเข้าสู่ระบบ" };
+
+  const { error } = await supabase
+    .from("quests")
+    .delete()
+    .eq("id", questId)
+    .eq("user_id", user.id);
+
+  if (error) return { error: error.message };
+
+  revalidatePath("/dashboard");
+  revalidatePath("/quests");
+  return { success: true };
+}

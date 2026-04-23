@@ -5,6 +5,7 @@ export interface Profile {
   current_exp: number;
   total_exp_earned: number;
   minutes_balance: number;
+  last_active_date: string;
   created_at: string;
   updated_at: string;
 }

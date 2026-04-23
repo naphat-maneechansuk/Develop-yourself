@@ -1,6 +1,6 @@
 "use client";
 
-import { completeQuest, failQuest } from "@/actions/quests";
+import { completeQuest, failQuest, deleteQuest } from "@/actions/quests";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils/cn";
 import type { Quest } from "@/types";
@@ -30,6 +30,12 @@ export function QuestCard({ quest }: { quest: Quest }) {
   function handleFail() {
     startTransition(async () => {
       await failQuest(quest.id);
+    });
+  }
+
+  function handleDelete() {
+    startTransition(async () => {
+      await deleteQuest(quest.id);
     });
   }
 
@@ -73,6 +79,11 @@ export function QuestCard({ quest }: { quest: Quest }) {
             </Button>
             <Button size="sm" variant="danger" onClick={handleFail} disabled={isPending}>
               ล้มเหลว
+            </Button>
+            <Button size="sm" variant="ghost" onClick={handleDelete} disabled={isPending} title="ลบภารกิจ">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                <path d="M2 3.5h10M5.5 3.5V2.5a1 1 0 011-1h1a1 1 0 011 1v1M11 3.5l-.5 8a1.5 1.5 0 01-1.5 1.5H5a1.5 1.5 0 01-1.5-1.5L3 3.5" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
             </Button>
           </div>
         )}
