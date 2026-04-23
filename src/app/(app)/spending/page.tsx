@@ -23,25 +23,25 @@ export default async function SpendingPage() {
   const records = (recordsRes.data ?? []) as SpendingRecord[];
 
   return (
-    <div className="mx-auto max-w-3xl space-y-6">
+    <div className="mx-auto max-w-3xl space-y-8">
       <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-bold text-zinc-900 dark:text-zinc-100">ค่าใช้จ่าย</h1>
-        <div className="rounded-lg bg-indigo-50 px-4 py-2 dark:bg-indigo-950">
-          <span className="text-sm text-zinc-500 dark:text-zinc-400">ยอดคงเหลือ: </span>
-          <span className="font-bold text-indigo-600">{profile.minutes_balance} นาที</span>
+        <h1 className="text-2xl font-semibold text-[#e8e5e0]">ค่าใช้จ่าย</h1>
+        <div className="rounded-full border border-[#262626] bg-[#1a1a1a] px-4 py-2">
+          <span className="text-sm text-[#737373]">ยอดคงเหลือ: </span>
+          <span className="font-medium text-[#e8e5e0]">{profile.minutes_balance} นาที</span>
         </div>
       </div>
 
-      <div className="rounded-xl border border-zinc-200 bg-white p-6 dark:border-zinc-800 dark:bg-zinc-900">
-        <h2 className="mb-4 text-lg font-semibold text-zinc-900 dark:text-zinc-100">ขอใช้จ่าย</h2>
-        <p className="mb-3 text-sm text-zinc-500 dark:text-zinc-400">
+      <div className="rounded-2xl border border-[#262626] bg-[#1a1a1a] p-6">
+        <h2 className="mb-4 text-base font-semibold text-[#e8e5e0]">ขอใช้จ่าย</h2>
+        <p className="mb-3 text-sm text-[#737373]">
           ระยะรอ: {config.spending.delay_days} วัน | จำกัดต่อเดือน: {config.spending.monthly_limit}
         </p>
         <SpendingForm />
       </div>
 
       <div>
-        <h2 className="mb-3 text-lg font-semibold text-zinc-900 dark:text-zinc-100">รายการ</h2>
+        <h2 className="mb-3 text-base font-semibold text-[#e8e5e0]">รายการ</h2>
         <SpendingList records={records} delayDays={config.spending.delay_days} />
       </div>
     </div>

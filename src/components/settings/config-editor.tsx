@@ -20,9 +20,9 @@ function NumberField({
   return (
     <div className="flex items-start justify-between gap-4 py-2">
       <div className="flex-1">
-        <p className="text-sm font-medium text-zinc-900 dark:text-zinc-100">{label}</p>
+        <p className="text-sm font-medium text-[#e8e5e0]">{label}</p>
         {description && (
-          <p className="text-xs text-zinc-500 dark:text-zinc-400">{description}</p>
+          <p className="text-xs text-[#737373]">{description}</p>
         )}
       </div>
       <Input
@@ -38,10 +38,10 @@ function NumberField({
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <div className="space-y-1">
-      <h3 className="mb-2 text-sm font-semibold uppercase tracking-wider text-indigo-600">
+      <h3 className="mb-2 text-xs font-medium uppercase tracking-widest text-[#737373]">
         {title}
       </h3>
-      <div className="divide-y divide-zinc-100 dark:divide-zinc-800">{children}</div>
+      <div className="divide-y divide-[#222]">{children}</div>
     </div>
   );
 }
@@ -182,13 +182,13 @@ export function ConfigEditor({ config }: { config: GameConfig }) {
 
       <Section title="อัตราค่าใช้จ่าย (นาที)">
         <div className="space-y-2 py-2">
-          <p className="text-xs text-zinc-500 dark:text-zinc-400">
+          <p className="text-xs text-[#737373]">
             กำหนดจำนวนนาทีที่ต้องจ่ายตามช่วงราคา
           </p>
           {cfg.spending.tiers.map((tier, i) => (
             <div key={i} className="flex items-center gap-2">
-              <span className="text-xs text-zinc-500 w-8">{i + 1}.</span>
-              <span className="text-xs text-zinc-600 dark:text-zinc-400 w-16">ไม่เกิน</span>
+              <span className="text-xs text-[#737373] w-8">{i + 1}.</span>
+              <span className="text-xs text-[#737373] w-16">ไม่เกิน</span>
               <Input
                 type="number"
                 value={tier.threshold}
@@ -202,7 +202,7 @@ export function ConfigEditor({ config }: { config: GameConfig }) {
                 }}
                 className="w-24 text-center"
               />
-              <span className="text-xs text-zinc-600 dark:text-zinc-400">บาท →</span>
+              <span className="text-xs text-[#737373]">บาท →</span>
               <Input
                 type="number"
                 value={tier.cost}
@@ -216,7 +216,7 @@ export function ConfigEditor({ config }: { config: GameConfig }) {
                 }}
                 className="w-20 text-center"
               />
-              <span className="text-xs text-zinc-600 dark:text-zinc-400">นาที</span>
+              <span className="text-xs text-[#737373]">นาที</span>
               {cfg.spending.tiers.length > 1 && (
                 <button
                   type="button"
@@ -227,7 +227,7 @@ export function ConfigEditor({ config }: { config: GameConfig }) {
                       spending: { ...prev.spending, tiers: newTiers },
                     }));
                   }}
-                  className="text-xs text-red-500 hover:text-red-700"
+                  className="text-xs text-red-400/70 hover:text-red-400"
                 >
                   ลบ
                 </button>
@@ -245,7 +245,7 @@ export function ConfigEditor({ config }: { config: GameConfig }) {
                 },
               }));
             }}
-            className="text-xs text-indigo-600 hover:underline"
+            className="text-xs text-[#888] hover:text-[#e8e5e0] transition-colors"
           >
             + เพิ่มช่วงราคา
           </button>
@@ -253,12 +253,12 @@ export function ConfigEditor({ config }: { config: GameConfig }) {
       </Section>
 
       {message && (
-        <p className={`text-sm ${message.type === "error" ? "text-red-500" : "text-green-500"}`}>
+        <p className={`text-sm ${message.type === "error" ? "text-red-400/70" : "text-emerald-400/70"}`}>
           {message.text}
         </p>
       )}
 
-      <div className="flex gap-3 border-t border-zinc-200 pt-4 dark:border-zinc-800">
+      <div className="flex gap-3 border-t border-[#262626] pt-4">
         <Button onClick={handleSave} disabled={isPending}>
           {isPending ? "กำลังบันทึก..." : "บันทึกการตั้งค่า"}
         </Button>

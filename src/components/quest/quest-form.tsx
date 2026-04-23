@@ -22,7 +22,7 @@ export function QuestForm() {
         </div>
         <select
           name="quest_type"
-          className="h-10 rounded-lg border border-zinc-300 bg-white px-3 text-sm dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100"
+          className="h-10 rounded-lg border border-[#262626] bg-[#1a1a1a] px-3 text-sm text-[#e8e5e0]"
           defaultValue="main"
         >
           <option value="main">ภารกิจหลัก</option>
@@ -34,13 +34,13 @@ export function QuestForm() {
       <div className="flex gap-3">
         <Input name="exp_reward" type="number" placeholder="EXP กำหนดเอง (ไม่บังคับ)" className="w-40" />
         <Input name="due_date" type="date" className="w-40" />
-        <label className="flex items-center gap-2 text-sm text-zinc-600 dark:text-zinc-400">
-          <input type="checkbox" name="is_recurring" value="true" />
+        <label className="flex items-center gap-2 text-sm text-[#737373]">
+          <input type="checkbox" name="is_recurring" value="true" className="accent-[#e8e5e0]" />
           ทำซ้ำ
         </label>
       </div>
-      {state?.error && <p className="text-sm text-red-500">{state.error}</p>}
-      {state?.success && <p className="text-sm text-green-500">สร้างภารกิจแล้ว!</p>}
+      {state?.error && <p className="text-sm text-red-400/70">{state.error}</p>}
+      {state?.success && <p className="text-sm text-emerald-400/70">สร้างภารกิจแล้ว!</p>}
       <Button type="submit" disabled={pending} className="self-start">
         {pending ? "กำลังสร้าง..." : "สร้างภารกิจ"}
       </Button>

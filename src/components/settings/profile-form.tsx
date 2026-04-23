@@ -26,8 +26,8 @@ export function ProfileForm({ displayName }: { displayName: string }) {
           {pending ? "กำลังอัพเดท..." : "อัพเดท"}
         </Button>
       </div>
-      {state?.error && <p className="text-sm text-red-500">{state.error}</p>}
-      {state?.success && <p className="text-sm text-green-500">อัพเดทแล้ว!</p>}
+      {state?.error && <p className="text-sm text-red-400/70">{state.error}</p>}
+      {state?.success && <p className="text-sm text-emerald-400/70">อัพเดทแล้ว!</p>}
     </form>
   );
 }

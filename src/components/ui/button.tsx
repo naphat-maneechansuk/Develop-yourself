@@ -15,17 +15,17 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         ref={ref}
         disabled={disabled}
         className={cn(
-          "inline-flex items-center justify-center rounded-lg font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
+          "inline-flex items-center justify-center rounded-full font-medium transition-all focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#e8e5e0]/30 focus-visible:ring-offset-1 focus-visible:ring-offset-[#111111] disabled:pointer-events-none disabled:opacity-40",
           {
-            "bg-indigo-600 text-white hover:bg-indigo-700 focus-visible:ring-indigo-500": variant === "primary",
-            "bg-zinc-200 text-zinc-900 hover:bg-zinc-300 dark:bg-zinc-700 dark:text-zinc-100 dark:hover:bg-zinc-600": variant === "secondary",
-            "bg-red-600 text-white hover:bg-red-700 focus-visible:ring-red-500": variant === "danger",
-            "text-zinc-600 hover:bg-zinc-100 dark:text-zinc-400 dark:hover:bg-zinc-800": variant === "ghost",
+            "border border-[#e8e5e0]/20 bg-transparent text-[#e8e5e0] hover:bg-[#e8e5e0]/5": variant === "primary",
+            "border border-[#333] bg-[#1a1a1a] text-[#999] hover:bg-[#222] hover:text-[#e8e5e0]": variant === "secondary",
+            "border border-red-500/20 bg-transparent text-red-400 hover:bg-red-500/5": variant === "danger",
+            "text-[#888] hover:text-[#e8e5e0] hover:bg-[#1a1a1a]": variant === "ghost",
           },
           {
-            "h-8 px-3 text-sm": size === "sm",
-            "h-10 px-4 text-sm": size === "md",
-            "h-12 px-6 text-base": size === "lg",
+            "h-8 px-4 text-xs": size === "sm",
+            "h-10 px-5 text-sm": size === "md",
+            "h-12 px-6 text-sm": size === "lg",
           },
           className
         )}

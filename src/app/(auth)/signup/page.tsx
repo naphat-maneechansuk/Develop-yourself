@@ -24,13 +24,13 @@ export default function SignupPage() {
         </CardHeader>
         <CardContent className="text-center">
           <div className="mb-4 text-5xl">&#9993;</div>
-          <p className="mb-2 text-zinc-700 dark:text-zinc-300">
+          <p className="mb-2 text-[#999]">
             เราส่งลิงก์ยืนยันไปที่
           </p>
-          <p className="mb-4 font-semibold text-zinc-900 dark:text-zinc-100">
+          <p className="mb-4 font-semibold text-[#e8e5e0]">
             {state.email}
           </p>
-          <p className="mb-6 text-sm text-zinc-500 dark:text-zinc-400">
+          <p className="mb-6 text-sm text-[#737373]">
             กรุณาคลิกลิงก์ในอีเมลเพื่อเปิดใช้งานบัญชีของคุณ แล้วกลับมาเข้าสู่ระบบ
           </p>
           <Link href="/login">
@@ -51,32 +51,32 @@ export default function SignupPage() {
       <CardContent>
         <form action={formAction} className="flex flex-col gap-4">
           <div>
-            <label htmlFor="displayName" className="mb-1 block text-sm font-medium text-zinc-700 dark:text-zinc-300">
+            <label htmlFor="displayName" className="mb-1 block text-sm font-medium text-[#999]">
               ชื่อที่แสดง
             </label>
             <Input id="displayName" name="displayName" required />
           </div>
           <div>
-            <label htmlFor="email" className="mb-1 block text-sm font-medium text-zinc-700 dark:text-zinc-300">
+            <label htmlFor="email" className="mb-1 block text-sm font-medium text-[#999]">
               อีเมล
             </label>
             <Input id="email" name="email" type="email" required />
           </div>
           <div>
-            <label htmlFor="password" className="mb-1 block text-sm font-medium text-zinc-700 dark:text-zinc-300">
+            <label htmlFor="password" className="mb-1 block text-sm font-medium text-[#999]">
               รหัสผ่าน (อย่างน้อย 6 ตัวอักษร)
             </label>
             <Input id="password" name="password" type="password" minLength={6} required />
           </div>
           {state?.error && (
-            <p className="text-sm text-red-500">{state.error}</p>
+            <p className="text-sm text-red-400/70">{state.error}</p>
           )}
           <Button type="submit" disabled={pending}>
             {pending ? "กำลังสร้างบัญชี..." : "สมัครสมาชิก"}
           </Button>
-          <p className="text-center text-sm text-zinc-500">
+          <p className="text-center text-sm text-[#737373]">
             มีบัญชีอยู่แล้ว?{" "}
-            <Link href="/login" className="text-indigo-600 hover:underline">
+            <Link href="/login" className="text-[#e8e5e0] hover:underline">
               เข้าสู่ระบบ
             </Link>
           </p>

@@ -23,7 +23,7 @@ export function LogEditor({ date, existingLog }: LogEditorProps) {
     <form action={formAction} className="space-y-4">
       <input type="hidden" name="log_date" value={date} />
       <div>
-        <label className="mb-1 block text-sm font-medium text-zinc-700 dark:text-zinc-300">
+        <label className="mb-1 block text-sm font-medium text-[#999]">
           ไดอารี่
         </label>
         <Textarea
@@ -34,7 +34,7 @@ export function LogEditor({ date, existingLog }: LogEditorProps) {
         />
       </div>
       <div>
-        <label className="mb-1 block text-sm font-medium text-zinc-700 dark:text-zinc-300">
+        <label className="mb-1 block text-sm font-medium text-[#999]">
           ข้อผิดพลาด / บทเรียน
         </label>
         <Textarea
@@ -44,8 +44,8 @@ export function LogEditor({ date, existingLog }: LogEditorProps) {
           defaultValue={existingLog?.mistakes ?? ""}
         />
       </div>
-      {state?.error && <p className="text-sm text-red-500">{state.error}</p>}
-      {state?.success && <p className="text-sm text-green-500">บันทึกแล้ว!</p>}
+      {state?.error && <p className="text-sm text-red-400/70">{state.error}</p>}
+      {state?.success && <p className="text-sm text-emerald-400/70">บันทึกแล้ว!</p>}
       <Button type="submit" disabled={pending}>
         {pending ? "กำลังบันทึก..." : "บันทึก"}
       </Button>

@@ -16,17 +16,17 @@ export default async function SettingsPage() {
   const config = configRes.data?.config as GameConfig;
 
   return (
-    <div className="mx-auto max-w-3xl space-y-6">
-      <h1 className="text-2xl font-bold text-zinc-900 dark:text-zinc-100">ตั้งค่า</h1>
+    <div className="mx-auto max-w-3xl space-y-8">
+      <h1 className="text-2xl font-semibold text-[#e8e5e0]">ตั้งค่า</h1>
 
-      <div className="rounded-xl border border-zinc-200 bg-white p-6 dark:border-zinc-800 dark:bg-zinc-900">
-        <h2 className="mb-4 text-lg font-semibold text-zinc-900 dark:text-zinc-100">โปรไฟล์</h2>
+      <div className="rounded-2xl border border-[#262626] bg-[#1a1a1a] p-6">
+        <h2 className="mb-4 text-base font-semibold text-[#e8e5e0]">โปรไฟล์</h2>
         <ProfileForm displayName={profile.display_name} />
       </div>
 
-      <div className="rounded-xl border border-zinc-200 bg-white p-6 dark:border-zinc-800 dark:bg-zinc-900">
-        <h2 className="mb-2 text-lg font-semibold text-zinc-900 dark:text-zinc-100">ตั้งค่าเกม</h2>
-        <p className="mb-4 text-sm text-zinc-500 dark:text-zinc-400">
+      <div className="rounded-2xl border border-[#262626] bg-[#1a1a1a] p-6">
+        <h2 className="mb-2 text-base font-semibold text-[#e8e5e0]">ตั้งค่าเกม</h2>
+        <p className="mb-4 text-sm text-[#737373]">
           ปรับแต่งกฎเกมของคุณ การเปลี่ยนแปลงจะมีผลกับภารกิจใหม่เท่านั้น ภารกิจเก่าไม่เปลี่ยน
         </p>
         <ConfigEditor config={config} />

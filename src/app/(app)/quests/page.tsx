@@ -20,11 +20,11 @@ export default async function QuestsPage() {
   const failed = allQuests.filter((q) => q.status === "failed");
 
   return (
-    <div className="mx-auto max-w-3xl space-y-6">
-      <h1 className="text-2xl font-bold text-zinc-900 dark:text-zinc-100">ภารกิจ</h1>
+    <div className="mx-auto max-w-3xl space-y-8">
+      <h1 className="text-2xl font-semibold text-[#e8e5e0]">ภารกิจ</h1>
 
-      <div className="rounded-xl border border-zinc-200 bg-white p-6 dark:border-zinc-800 dark:bg-zinc-900">
-        <h2 className="mb-4 text-lg font-semibold text-zinc-900 dark:text-zinc-100">ภารกิจใหม่</h2>
+      <div className="rounded-2xl border border-[#262626] bg-[#1a1a1a] p-6">
+        <h2 className="mb-4 text-base font-semibold text-[#e8e5e0]">ภารกิจใหม่</h2>
         <QuestForm />
       </div>
 

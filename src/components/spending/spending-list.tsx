@@ -16,24 +16,24 @@ function SpendingItem({ record, canApprove }: { record: SpendingRecord; canAppro
   }
 
   return (
-    <div className="flex items-center justify-between rounded-lg border border-zinc-200 bg-white p-4 dark:border-zinc-800 dark:bg-zinc-900">
+    <div className="flex items-center justify-between rounded-2xl border border-[#262626] bg-[#1a1a1a] p-4">
       <div>
         <div className="flex items-center gap-2">
-          <span className="font-medium text-zinc-900 dark:text-zinc-100">{record.amount_baht} บาท</span>
-          <span className="text-sm text-zinc-500">(-{record.minutes_deducted} นาที)</span>
+          <span className="font-medium text-[#e8e5e0]">{record.amount_baht} บาท</span>
+          <span className="text-sm text-[#737373]">(-{record.minutes_deducted} นาที)</span>
           <span className={cn(
-            "rounded-full px-2 py-0.5 text-xs font-medium",
+            "rounded-full border px-2 py-0.5 text-xs",
             record.is_approved
-              ? "bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300"
-              : "bg-yellow-100 text-yellow-700 dark:bg-yellow-900 dark:text-yellow-300"
+              ? "border-emerald-800/40 text-emerald-400/70"
+              : "border-yellow-800/40 text-yellow-400/70"
           )}>
             {record.is_approved ? "อนุมัติแล้ว" : "รออนุมัติ"}
           </span>
         </div>
         {record.description && (
-          <p className="mt-1 text-sm text-zinc-500 dark:text-zinc-400">{record.description}</p>
+          <p className="mt-1 text-sm text-[#737373]">{record.description}</p>
         )}
-        <p className="mt-1 text-xs text-zinc-400">
+        <p className="mt-1 text-xs text-[#555]">
           ขอเมื่อ: {new Date(record.requested_at).toLocaleDateString()}
         </p>
       </div>
@@ -49,7 +49,7 @@ function SpendingItem({ record, canApprove }: { record: SpendingRecord; canAppro
 export function SpendingList({ records, delayDays }: { records: SpendingRecord[]; delayDays: number }) {
   if (records.length === 0) {
     return (
-      <div className="rounded-lg border border-dashed border-zinc-300 p-8 text-center text-sm text-zinc-500 dark:border-zinc-700 dark:text-zinc-400">
+      <div className="rounded-2xl border border-dashed border-[#262626] p-8 text-center text-sm text-[#737373]">
         ยังไม่มีรายการค่าใช้จ่าย
       </div>
     );

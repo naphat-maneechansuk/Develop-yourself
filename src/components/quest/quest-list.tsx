@@ -4,7 +4,7 @@ import type { Quest } from "@/types";
 export function QuestList({ quests, title }: { quests: Quest[]; title?: string }) {
   if (quests.length === 0) {
     return (
-      <div className="rounded-lg border border-dashed border-zinc-300 p-8 text-center text-sm text-zinc-500 dark:border-zinc-700 dark:text-zinc-400">
+      <div className="rounded-2xl border border-dashed border-[#262626] p-8 text-center text-sm text-[#737373]">
         ยังไม่มีภารกิจ
       </div>
     );
@@ -13,7 +13,7 @@ export function QuestList({ quests, title }: { quests: Quest[]; title?: string }
   return (
     <div>
       {title && (
-        <h3 className="mb-3 text-sm font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
+        <h3 className="mb-3 text-xs font-medium uppercase tracking-widest text-[#737373]">
           {title}
         </h3>
       )}

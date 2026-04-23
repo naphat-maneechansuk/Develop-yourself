@@ -23,26 +23,26 @@ export default function LoginPage() {
       <CardContent>
         <form action={formAction} className="flex flex-col gap-4">
           <div>
-            <label htmlFor="email" className="mb-1 block text-sm font-medium text-zinc-700 dark:text-zinc-300">
+            <label htmlFor="email" className="mb-1 block text-sm font-medium text-[#999]">
               อีเมล
             </label>
             <Input id="email" name="email" type="email" required />
           </div>
           <div>
-            <label htmlFor="password" className="mb-1 block text-sm font-medium text-zinc-700 dark:text-zinc-300">
+            <label htmlFor="password" className="mb-1 block text-sm font-medium text-[#999]">
               รหัสผ่าน
             </label>
             <Input id="password" name="password" type="password" required />
           </div>
           {state?.error && (
-            <p className="text-sm text-red-500">{state.error}</p>
+            <p className="text-sm text-red-400/70">{state.error}</p>
           )}
           <Button type="submit" disabled={pending}>
             {pending ? "กำลังเข้าสู่ระบบ..." : "เข้าสู่ระบบ"}
           </Button>
-          <p className="text-center text-sm text-zinc-500">
+          <p className="text-center text-sm text-[#737373]">
             ยังไม่มีบัญชี?{" "}
-            <Link href="/signup" className="text-indigo-600 hover:underline">
+            <Link href="/signup" className="text-[#e8e5e0] hover:underline">
               สมัครสมาชิก
             </Link>
           </p>

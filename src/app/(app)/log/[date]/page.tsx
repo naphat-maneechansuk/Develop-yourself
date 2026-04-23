@@ -31,22 +31,22 @@ export default async function LogDatePage({
   return (
     <div className="mx-auto max-w-3xl space-y-6">
       <div className="flex items-center gap-3">
-        <Link href="/log" className="text-sm text-indigo-600 hover:underline">
+        <Link href="/log" className="text-sm text-[#737373] hover:text-[#e8e5e0] transition-colors">
           &larr; กลับ
         </Link>
-        <h1 className="text-2xl font-bold text-zinc-900 dark:text-zinc-100">บันทึก: {date}</h1>
+        <h1 className="text-2xl font-semibold text-[#e8e5e0]">บันทึก: {date}</h1>
       </div>
 
       {log && (
-        <div className="rounded-lg border border-zinc-200 bg-white p-4 dark:border-zinc-800 dark:bg-zinc-900">
+        <div className="rounded-2xl border border-[#262626] bg-[#1a1a1a] p-4">
           <div className="flex gap-6 text-sm">
-            <span className="text-green-600">+{log.exp_gained} EXP ที่ได้</span>
-            <span className="text-red-500">-{log.exp_lost} EXP ที่เสีย</span>
+            <span className="text-emerald-400/70">+{log.exp_gained} EXP ที่ได้</span>
+            <span className="text-red-400/70">-{log.exp_lost} EXP ที่เสีย</span>
           </div>
         </div>
       )}
 
-      <div className="rounded-xl border border-zinc-200 bg-white p-6 dark:border-zinc-800 dark:bg-zinc-900">
+      <div className="rounded-2xl border border-[#262626] bg-[#1a1a1a] p-6">
         <LogEditor date={date} existingLog={log} />
       </div>
     </div>
